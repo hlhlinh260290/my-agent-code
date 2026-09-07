@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 export default function Dashboard() {
   // Lỗi ESLint: 'unusedData' is assigned a value but never used.
-  const unusedData = "Hello";
+  // const unusedData = "Hello";
 
   useEffect(() => {
     console.log("Dashboard loaded");

@@ -15,7 +15,7 @@ var _s = __turbopack_context__.k.signature();
 function Dashboard() {
     _s();
     // Lỗi ESLint: 'unusedData' is assigned a value but never used.
-    const unusedData = "Hello";
+    // const unusedData = "Hello";
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f2e$pnpm$2f$next$40$16$2e$3$2e$4_$40$babel$2b$core$40$7$2e$29$2e$7_$40$types$2b$node$40$22$2e$20$2e$1_react$2d$dom$40$19$2e$2$2e$8_react$40$19$2e$2$2e$8_$5f$react$40$19$2e$2$2e$8$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Dashboard.useEffect": ()=>{
             console.log("Dashboard loaded");
