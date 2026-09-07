@@ -18,7 +18,7 @@ jobs:
     needs: quality-gate
     if: failure() # Chỉ kích hoạt khi quality-gate báo đỏ
     runs-on: ubuntu-latest
-    environment: sandbox # Environment cô lập, không chứa secret production
+    environment: agent-sandbox # Environment cô lập, không chứa secret production
     permissions:
       contents: write # Quyền đẩy code lên nhánh mới
       pull-requests: write # Quyền tạo PR

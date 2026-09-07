@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Ignore nested workspace's generated files:
+    "my-agent-code/.next/**",
   ]),
 ]);
 
