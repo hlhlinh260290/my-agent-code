@@ -1,0 +1,44 @@
+name: CI & Agent Auto-Fix
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+
+  agent-auto-fix:
+    needs: quality-gate
+    if: failure() # Chỉ kích hoạt khi quality-gate báo đỏ
+    runs-on: ubuntu-latest
+    environment: sandbox # Environment cô lập, không chứa secret production
+    permissions:
+      contents: write # Quyền đẩy code lên nhánh mới
+      pull-requests: write # Quyền tạo PR
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Khởi chạy Headless Agent
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          # Sử dụng CLI của agent (ví dụ Aider, Sweep, hoặc custom script)
+          npx run-headless-agent \
+            --instruction "Đọc log lỗi từ bước lint/test trước đó. Sửa lỗi trong các file Next.js tương ứng. Sau khi sửa, tự động chạy lại 'npm run lint && npm run test' để verify." \
+            --allowed-paths "app/**/*.tsx,components/**/*.tsx" \
+            --max-turns 3 \
+            --on-success "create-pr" \
+            --pr-title "Auto-fix: Resolve CI Lint/Test failures" \
+            --pr-body "Headless agent đã tự động phân tích và sửa lỗi ESLint/Test. Vui lòng review." \
+            --branch-prefix "agent-fix/"
