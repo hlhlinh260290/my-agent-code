@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 10, "column": 0}, "map": {"version":3,"sources":["file:///Users/linhha/workspace/github-personnal/my-agent-code/app/dashboard/page.tsx"],"sourcesContent":["import { useEffect } from \"react\";\n\nexport default function Dashboard() {\n  // Lỗi ESLint: 'unusedData' is assigned a value but never used.\n  const unusedData = \"Hello\";\n\n  useEffect(() => {\n    console.log(\"Dashboard loaded\");\n  }, []); // Cố tình bỏ quên dependency nếu có gọi API\n\n  return <div>Dashboard</div>;\n}\n"],"names":["Dashboard","unusedData","console","log"],"mappings":";;;;;AAAA;;;AAEe,SAASA;IACtB,+DAA+D;IAC/D,MAAMC,aAAa;IAEnB,IAAA,sZAAS,EAAC;QACRC,QAAQC,GAAG,CAAC;IACd,GAAG,EAAE,GAAG,4CAA4C;IAEpD,qBAAO,kbAAC;kBAAI;;;;;;AACd"}},
-    {"offset": {"line": 43, "column": 0}, "map": {"version":3,"sources":["file:///Users/linhha/workspace/github-personnal/my-agent-code/app/favicon.ico.mjs%20(structured%20image%20object)"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 256, height: 256 }\n"],"names":["src","width","height"],"mappings":";;;;AAAA;;uCACe;IAAEA,KAAAA,mIAAG;IAAEC,OAAO;IAAKC,QAAQ;AAAI"}}]
-}
